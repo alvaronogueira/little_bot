@@ -1,16 +1,22 @@
+import 'package:test/expect.dart';
+
 void main() {
-  Future myFuture = Future(() {
-    print('Going back to the Future.');
-    return 59;
-  }).then((value) => print('The value is $value'));
+  //Future myFuture = Future(() {
+  //  print('Going back to the Future.');
+  //  return 59;
+  //}).then((value) => print('The value is $value'));
 
   Future<int> myFutureFunc() async {
     print('I have a function in the Future.');
     await Future.delayed(Duration(seconds: 3));
+    throw Exception();
     return 12;
   }
 
-  myFutureFunc().then((value) => print('My Function value is: $value.'));
+  myFutureFunc()
+      .then((value) => print('My Function value is: $value.'))
+      .onError((error, stackTrace) => print('An error occurred'))
+      .whenComplete(() => print('The future is over now!'));
 
   print('Done with main.');
 }
