@@ -1,4 +1,4 @@
-void main(){
+void main() {
   Future myFuture = Future(() {
     print('Going back to the Future.');
     return 59;
@@ -6,7 +6,7 @@ void main(){
 
   Future<int> myFutureFunc() async {
     print('I have a function in the Future.');
-    await Future.delayed(Duration(seconds: 5));
+    await Future.delayed(Duration(seconds: 3));
     return 12;
   }
 
