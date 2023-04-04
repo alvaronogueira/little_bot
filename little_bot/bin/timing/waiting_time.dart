@@ -1,6 +1,6 @@
 class BotClock {
   
-  Future clock(seconds) {
+  Future clock(int seconds) {
     return Future.delayed(Duration(seconds: seconds));
   }
   
