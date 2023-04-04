@@ -1,8 +1,8 @@
-
+import 'questions/time_questions.dart';
 import 'dart:io';
 
 void main() async {
-  String LilBot = 'LilBOT:\n';
+  String lilbot = 'LilBOT:\n';
   var a = true;
   String user = '';
 
@@ -20,7 +20,7 @@ void main() async {
       user.contains('GoodBye') ||
       user.contains('GoodBye')) {
         a = false;
-        print(LilBot + 'See Ya!');
+        print(lilbot + 'See Ya!');
   } // deleted code
         
   } else if (TimeQuestions(user).isThisTime()) {
@@ -30,9 +30,9 @@ void main() async {
    } else if (false) {
     //ADD news questions here
   } else {
-      print(LilBot + 
+      print(lilbot + 
         'I am not abled to answer this questions\n I am sorry :('); 
-      print(LilBot + 'You could doing other question or say bye');
+      print(lilbot + 'You could doing other question or say bye');
   } while (a);
 
   print('-- shutting down LilBot --');
