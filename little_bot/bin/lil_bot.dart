@@ -55,21 +55,3 @@ void main() async {
     
   
 
-unsure() {
-  if (question.contains('horas') || question.contains('Horas')) {
-    
-    String _botQuestion = 
-      LilBot + 'Você gostaria quer saber as horas?';
-    print(_botQuestion);
-    String answer = stdin.readLineSync().toString();
-    if (answer.contains('Sim') || answer.contains('sim')) {
-      
-      String _botAnswer = LilBot + 'Beleza, são: ${date.hour} horas e ${date.minute} minutos!';
-      print(_botAnswer);
-    } else {
-
-      String _botAnswer = LilBot + 'Ah, foi mal... entendi errado.';
-      print(_botAnswer);
-    }
-  }
-}
