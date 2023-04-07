@@ -1,3 +1,4 @@
+import 'questions/good_manners.dart';
 import 'questions/time_questions.dart';
 import 'timing/waiting_time.dart';
 import 'dart:io';
@@ -33,6 +34,8 @@ void main() async {
       //check before, this way we not do all function
       await BotClock().clock(2);
       TimeQuestions(usuario).timeQuestion();
+    } else if (GoodManners(usuario).isThisManners()) {
+      GoodManners(usuario).goodManners();
     } else if (false) {
       //ADD news questions here
     } else {
