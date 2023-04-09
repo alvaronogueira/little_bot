@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
-void main() {
+void main() async {
   Stream myStream(int interval, [int? maxCount]) async* {
     int i = 1;
     while (i != maxCount) {
@@ -12,7 +12,8 @@ void main() {
     print('The Stream is finished.');
   }
 
-  StreamSubscription mySubscriber = myStream(1, 10).listen((event) {
+  var lilStream = myStream(1).asBroadcastStream();
+  StreamSubscription mySubscriber = lilStream.listen((event) {
     if (event.isEven) {
       print('This number is even!');
     }
@@ -21,6 +22,19 @@ void main() {
   }, onDone: () {
     print('Subscriber is gone.');
   });
+  lilStream.map((event) => 'Subscriber 2 watching: $event').listen(print);
+
+
+  await Future.delayed(Duration(seconds: 3));
+  mySubscriber.pause();
+  print('Stream paused');
+  await Future.delayed(Duration(seconds: 3));
+  mySubscriber.resume();
+  print('Stream resumed');
+  await Future.delayed(Duration(seconds: 3));
+  mySubscriber.cancel();
+  print('Stream canceled');
+
 
   print('The Main is finished.');
 }
